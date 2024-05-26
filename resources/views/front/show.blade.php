@@ -68,7 +68,7 @@
           <p class="mt-1"> <i class="feather icon-phone-call"></i> @auth <a href="tel:+62{{$kamar->user->no_wa}}"> {{$kamar->user->no_wa}}</a>  @else 0822******** @endauth </p>
 
           <p class="mt-2" style="font-size: 12px">Hubungi pemilik kos untuk menanyakan lebih detail terkait kamar ini.</p>
-          <button class="btn btn-outline-black">Kirim pesan ke pemilik kos</button>
+          <a href="https://wa.me/62{{$kamar->user->no_wa}}" target="_blank" class="btn btn-outline-black">Kirim pesan ke pemilik kos</a>
           <hr>
           @if ($kamar->promo != null && $kamar->promo->end_date_promo >= Carbon\carbon::now()->format('d F, Y') && $kamar->promo->status == 1 )
             <p class="mt-2" style="font-weight: bold; font-size:18px; color:black">DISKONNYA BIKIN HEMAT!</p>
@@ -102,7 +102,7 @@
                 <span style="font-weight:bold; color:red">Kamar Penuh</span></span>
             @endif
           </div>
-          <div class="col-md-6 mt-1">
+          <div class="col-md-7 mt-1">
             @auth
               @if ($kamar->favorite == null)
                 {{-- Simpan kamar favorite --}}
@@ -137,6 +137,7 @@
               </div>
               <p class="hidden" id="url"> {{url('room', $kamar->slug)}} </p>
               <a onclick="copyToClipboard('#url')" id="eventshow" class="btn btn-outline-black btn-sm" data-toggle="tooltip" data-placement="top" title="Salin link" style="font-size: 12px; font-weight:bold; color:black"> <i class="feather icon-copy"></i>  Copy link</a>
+              <a href="{{$kamar->link_maps}}" target="_blank" class="btn btn-outline-black btn-sm"title="Salin link" style="font-size: 12px; font-weight:bold; color:black"> <i class="feather icon-map"></i>  Maps</a>
           </div>
         </div>
         <hr>
@@ -216,7 +217,7 @@
     </div>
   </div>
     {{-- Cek jika kamar aktif --}}
-    @if ($kamar->is_active == 1 && $kamar->status == 1)
+    @if ($kamar->is_active == 1 || $kamar->status == 1)
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">

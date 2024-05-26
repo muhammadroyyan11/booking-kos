@@ -171,7 +171,7 @@
 
                   <div class="col-sm-4">
                     <label class="col-form-label">Link Maps</label>
-                    <input type="number" name="link_maps" class="form-control @error('link_maps') is-invalid @enderror" value="{{old('link_maps')}}" placeholder="https://maps.app.goo.gl/.......">
+                    <input type="text" name="link_maps" class="form-control @error('link_maps') is-invalid @enderror" value="{{old('link_maps')}}" placeholder="https://maps.app.goo.gl/.......">
                     @error('link_maps')
                       <div class="invalid-feedback">
                         <strong>{{ $message }}</strong>
