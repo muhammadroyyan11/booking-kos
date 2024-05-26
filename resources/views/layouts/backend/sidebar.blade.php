@@ -28,6 +28,15 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item {{ Request::is('admin/owner*') ? 'has-sub sidebar-group-active open' : ''}}">
+                    <a href="#"><i class="feather icon-file"></i><span class="menu-title" data-i18n="Campaign">Master Data</span></a>
+                    <ul class="menu-content">
+                        <li class="{{Request::is('admin/owner') ? 'active' : ''}}">
+                        <a href="{{route('owner.index')}}"><i></i><span class="menu-item" data-i18n="Data Kamar">Data Pemilik</span></a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

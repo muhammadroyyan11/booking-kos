@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function () {
         '/admin-kamar' => 'Admin\AdminController'
     ]);
 
+    Route::resources([
+      '/owner' => 'Admin\OwnerController'
+    ]);
+
     Route::get('status-kamar','Admin\AdminController@statusKamar');
   });
 

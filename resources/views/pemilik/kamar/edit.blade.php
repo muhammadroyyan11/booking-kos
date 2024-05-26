@@ -132,6 +132,16 @@
                         @enderror
                     </div>
 
+                    <div class="col-sm-3">
+                      <label class="col-form-label">Link Maps</label>
+                      <input type="number" name="link_maps" class="form-control @error('link_maps') is-invalid @enderror" value="{{$edit->link_maps}}" placeholder="https://maps.app.goo.gl/.........">
+                      @error('link_maps')
+                        <div class="invalid-feedback">
+                          <strong>{{ $message }}</strong>
+                        </div>
+                      @enderror
+                  </div>
+
                     <div class="col-12">
                       <label class="col-form-label">Alamat Lengkap Kos</label>
                       <textarea name="alamat" class="form-control" id="alamat" rows="4" placeholder="Tulis lengkap alamat kos disini"> {{$edit->alamat->alamat ?? '-'}} </textarea>

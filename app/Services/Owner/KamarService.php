@@ -71,6 +71,7 @@ class KamarService {
       $kamar->harga_kamar     = $params->harga_kamar;
       $kamar->deposit         = $params->deposit;
       $kamar->biaya_admin     = $params->biaya_admin;
+      $kamar->link_maps       = $params->link_maps;
       $kamar->ket_lain        = $params->ket_lain;
       $kamar->ket_biaya       = $params->ket_biaya;
       $kamar->desc            = $params->desc;
@@ -195,6 +196,7 @@ class KamarService {
       $kamar->harga_kamar = $params->harga_kamar;
       $kamar->deposit     = $params->deposit;
       $kamar->biaya_admin = $params->biaya_admin;
+      $kamar->link_maps   = $params->link_maps;
       $kamar->ket_lain    = $params->ket_lain;
       $kamar->ket_biaya   = $params->ket_biaya;
       $kamar->desc        = $params->desc;

@@ -18,7 +18,7 @@
     <div class="col-12">
         <div class="card">
           <div class="card-header">
-              <h4 class="card-title">Data List Kamar
+              <h4 class="card-title">{{ $data['title'] }}
               </h4>
               <div class="pull-right">
                 <a href="{{route('kamar.promo')}}" class="btn btn-primary btn-flat btn-sm">
@@ -33,26 +33,24 @@
                   <thead>
                     <tr>
                       <th width="1%">No</th>
-                      <th class="text-nowrap">Nama Kamar</th>
-                      <th class="text-nowrap">Type Kamar</th>
-                      <th class="text-nowrap">Jenis Kamar</th>
-                      <th class="text-nowrap">Status Kamar</th>
+                      <th class="text-nowrap">Nama Pemilik</th>
+                      <th class="text-nowrap">Email</th>
+                      <th class="text-nowrap">No HP</th>
+                      <th class="text-nowrap">Jumlah Kamar</th>
                       <th class="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($kamar as $key => $item)
+                    @foreach ($data['owner'] as $key => $item)
                     <tr>
                       <td>{{$key+1}}</td>
-                      <td>{{$item->nama_kamar}}</td>
-                      <td>{{$item->kategori}}</td>
-                      <td>{{rupiah($item->harga_kamar)}}</td>
-                      <td><span class="btn btn-{{$item->is_active == 0 ? 'primary' : 'success'}} btn-sm text-white">{{$item->is_active == 1 ? 'Aktif' : 'Tidak Aktif'}}</span></td>
+                      <td>{{$item->name}}</td>
+                      <td>{{$item->email}}</td>
+                      <td>{{$item->no_wa}}</td>
+                      <td>{{$item->jumlah_properti}}</td>
                       <td class="text-center">
-                        <a href="{{url('room', $item->slug)}}" class="btn btn-info btn-sm">Show</a>
-                        @if ($item->status == 0)
-                           <a data-id-kamar="{{$item->id}}" id="statusKamar" class="btn btn-danger btn-sm">{{$item->status == 0 ? 'Setujui' : ''}}</a>
-                        @endif
+                        <a href="{{url('room', $item->id)}}" class="btn btn-info btn-sm">Show</a>
+                       
                       </td>
                     </tr>
                     @endforeach
