@@ -35,7 +35,15 @@
                         <li class="{{Request::is('admin/owner') ? 'active' : ''}}">
                         <a href="{{route('owner.index')}}"><i></i><span class="menu-item" data-i18n="Data Kamar">Data Pemilik</span></a>
                         </li>
+                        <li class="{{Request::is('admin/penghuni') ? 'active' : ''}}">
+                        <a href="{{route('penghuni.index')}}"><i></i><span class="menu-item" data-i18n="Data Kamar">Data Penghuni</span></a>
+                        </li>
                     </ul>
+                </li>
+
+                <li class="nav-item {{ (request()->is('')) ? 'active' : '' }}">
+                    <a href="/admin/laporan"><i class="feather icon-file"></i><span class="menu-title" data-i18n="Laporan">Laporan</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -81,14 +89,20 @@
         {{-- Booking / Sewa --}}
         <li class="nav-item {{ (request()->is('')) ? 'active' : '' }}">
             <a href="{{url('pemilik/booking-list')}}"><i class="feather icon-book"></i>
-            <span class="menu-title" data-i18n="Booking">Booking</span>
-            <span class="badge badge-light-info badge-pill ml-auto mr-1">{{countBook()}}</span>
+            <span class="menu-title" data-i18n="Booking">Booking List</span>
+{{--            <span class="badge badge-light-info badge-pill ml-auto mr-1">{{countBook()}}</span>--}}
             </a>
         </li>
 
         {{-- Penghuni --}}
         <li class="nav-item {{ (request()->is('')) ? 'active' : '' }}">
             <a href="/pemilik/penghuni"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Penghuni">Penghuni</span>
+            </a>
+        </li>
+
+        {{-- Laporan --}}
+        <li class="nav-item {{ (request()->is('')) ? 'active' : '' }}">
+            <a href="/pemilik/laporan"><i class="feather icon-file"></i><span class="menu-title" data-i18n="Laporan">Laporan</span>
             </a>
         </li>
 

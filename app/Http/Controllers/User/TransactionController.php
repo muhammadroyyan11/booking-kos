@@ -76,8 +76,8 @@ class TransactionController extends Controller
             $kamar->harga_total = $harga_total + $number;
           }
 
-          $kamar->tgl_sewa            = Carbon::parse($request->tgl_sewa)->format('d-m-Y');
-          $kamar->end_date_sewa       = Carbon::parse($request->tgl_sewa)->addDays($kamar->hari)->format('d-m-Y');
+          $kamar->tgl_sewa            = Carbon::parse($request->tgl_sewa)->format('Y-m-d');
+          $kamar->end_date_sewa       = Carbon::parse($request->tgl_sewa)->addDays($kamar->hari)->format('Y-m-d');
           $kamar->save();
 
           // jika sukses Simpan ke table payment

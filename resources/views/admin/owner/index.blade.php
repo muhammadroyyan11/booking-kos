@@ -37,7 +37,7 @@
                       <th class="text-nowrap">Email</th>
                       <th class="text-nowrap">No HP</th>
                       <th class="text-nowrap">Jumlah Kamar</th>
-                      <th class="text-center">Action</th>
+{{--                      <th class="text-center">Action</th>--}}
                     </tr>
                   </thead>
                   <tbody>
@@ -48,10 +48,10 @@
                       <td>{{$item->email}}</td>
                       <td>{{$item->no_wa}}</td>
                       <td>{{$item->jumlah_properti}}</td>
-                      <td class="text-center">
-                        <a href="{{url('room', $item->id)}}" class="btn btn-info btn-sm">Show</a>
-                       
-                      </td>
+{{--                      <td class="text-center">--}}
+{{--                        <a href="{{url('room', $item->id)}}" class="btn btn-info btn-sm">Show</a>--}}
+{{--                       --}}
+{{--                      </td>--}}
                     </tr>
                     @endforeach
                   </tbody>

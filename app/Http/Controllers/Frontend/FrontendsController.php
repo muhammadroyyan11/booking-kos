@@ -39,6 +39,58 @@ class FrontendsController extends Controller
         return view('front.index', \compact('kamar','promo'));
     }
 
+    public function about(Request $request)
+    {
+        $cari = $request->cari;
+        $kamar = kamar::with('promo')
+            ->when(isset($cari), function($a) use($cari){
+                $a->whereHas('provinsi', function($q) use ($cari) {
+                    $q->where('name', 'like', "%".$cari."%");
+                })
+                    ->orwhereHas('regencies', function($q) use ($cari){
+                        $q->where('name', 'like', "%".$cari."%");
+                    })
+                    ->orwhereHas('district', function($q) use ($cari){
+                        $q->where('name', 'like', "%".$cari."%");
+                    });
+                $a->orwhere('nama_kamar', 'like', "%".$cari."%");
+            })
+            ->where('status',1)
+            ->where('is_active',1)
+            ->orderBy('created_at','DESC')
+            ->paginate(8);
+        $promo = Promo::whereHas('kamar' , function($a) {
+            $a->where('status',1)->where('is_active',1);
+        })->where('end_date_promo', '>=' ,carbon::now()->format('d F, Y'))->get();
+        return view('front.about', \compact('kamar','promo'));
+    }
+
+    public function syarat(Request $request)
+    {
+        $cari = $request->cari;
+        $kamar = kamar::with('promo')
+            ->when(isset($cari), function($a) use($cari){
+                $a->whereHas('provinsi', function($q) use ($cari) {
+                    $q->where('name', 'like', "%".$cari."%");
+                })
+                    ->orwhereHas('regencies', function($q) use ($cari){
+                        $q->where('name', 'like', "%".$cari."%");
+                    })
+                    ->orwhereHas('district', function($q) use ($cari){
+                        $q->where('name', 'like', "%".$cari."%");
+                    });
+                $a->orwhere('nama_kamar', 'like', "%".$cari."%");
+            })
+            ->where('status',1)
+            ->where('is_active',1)
+            ->orderBy('created_at','DESC')
+            ->paginate(8);
+        $promo = Promo::whereHas('kamar' , function($a) {
+            $a->where('status',1)->where('is_active',1);
+        })->where('end_date_promo', '>=' ,carbon::now()->format('d F, Y'))->get();
+        return view('front.syarat', \compact('kamar','promo'));
+    }
+
     // Show Kamar
     public function showkamar($slug)
     {
@@ -83,7 +135,6 @@ class FrontendsController extends Controller
                 ->where('user_id', Auth::id());
             });
         })
-        ->where('status',1)
         ->where('is_active',1)
         ->orderBy('created_at','DESC')
         ->paginate(12);
@@ -117,7 +168,7 @@ class FrontendsController extends Controller
           $q->where('name', $request->nama_provinsi);
         })
         ->where('jenis_kamar', $request->jenis_kamar)
-        ->where('status',1)
+        // ->where('status',1)
         ->where('is_active',1)
         ->paginate(12);
       } elseif($request->nama_provinsi == 'all' && $request->jenis_kamar != 'all') {
@@ -126,7 +177,7 @@ class FrontendsController extends Controller
                 $a->where('end_date_promo', '>=' ,carbon::now()->format('d F, Y'));
             }
         ])->where('jenis_kamar', $request->jenis_kamar)
-        ->where('status',1)
+        // ->where('status',1)
         ->where('is_active',1)
         ->paginate(12);
       } elseif($request->nama_provinsi != 'all' && $request->jenis_kamar == 'all') {
@@ -137,7 +188,7 @@ class FrontendsController extends Controller
           ])->whereHas('provinsi', function($q) use ($request) {
           $q->where('name', $request->nama_provinsi);
         })
-        ->where('status',1)
+        // ->where('status',1)
         ->where('is_active',1)
         ->orderBy('created_at','DESC')
         ->paginate(12);
@@ -146,7 +197,8 @@ class FrontendsController extends Controller
             'promo' => function($a){
                 $a->where('end_date_promo', '>=' ,carbon::now()->format('d F, Y'));
             }
-        ])->where('status',1)
+        ])
+        // ->where('status',1)
         ->where('is_active',1)
         ->orderBy('created_at','DESC')
         ->paginate(12);

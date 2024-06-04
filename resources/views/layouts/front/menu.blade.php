@@ -24,11 +24,11 @@
                 </li>
 
                 <li data-menu="">
-                  <a href="/" data-i18n="Dashboard">
-                    <i class="feather icon-help-circle"></i>Pusat Bantuan</a>
+                  <a href="/about" data-i18n="Dashboard">
+                    <i class="feather icon-help-circle"></i>Tentang Kami</a>
                 </li>
                 <li data-menu="">
-                  <a href="/" data-i18n="Dashboard">
+                  <a href="/syarat-ketentuan" data-i18n="Dashboard">
                     <i class="feather icon-book"></i>Syarat & Ketentuan</a>
                 </li>
             </ul>

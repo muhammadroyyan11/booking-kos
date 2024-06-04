@@ -11,6 +11,8 @@
         "php": "^7.2",
         "andes2912/indobank": "^0.4.0",
         "azishapidin/indoregion": "^3.0",
+        "carlos-meneses/laravel-mpdf": "^2.1",
+        "codedge/laravel-fpdf": "^1.9",
         "doctrine/dbal": "^3.1",
         "fideloper/proxy": "^4.0",
         "jorenvanhocht/laravel-share": "^4.1",

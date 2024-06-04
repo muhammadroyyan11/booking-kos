@@ -12,7 +12,7 @@
           <div class="card-body">
             <form action="{{route('kamar.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="form-body ">
+              <div class="form-body">
                 <div class="row">
                   <div class="col-sm-12">
                       <label class="col-form-label">Nama Kamar</label>
